@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <h2>Catálogo de Productos</h2>
+
+  <div class="input-group mb-3">
+    <input type="number" [(ngModel)]="productId" class="form-control" placeholder="Buscar por ID de Producto">
+    <button class="btn btn-primary" (click)="searchProduct()">Buscar Producto</button>
+    <button class="btn btn-secondary ms-2" (click)="clearSearch()">Mostrar Todos</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <ng-container *ngIf="loading">
+    <div class="d-flex justify-content-center mt-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="ms-2">Cargando productos...</p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !errorMessage && singleProductView">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="singleProductView.images[0]" class="img-fluid rounded-start" [alt]="singleProductView.title">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ singleProductView.title }} (ID: {{ singleProductView.id }})</h5>
+            <p class="card-text">{{ singleProductView.description }}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Precio:</strong> ${{ singleProductView.price | number:'1.2-2' }}</li>
+              <li class="list-group-item"><strong>Categoría:</strong> {{ singleProductView.category?.name }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="!loading && !errorMessage && products.length > 0 && !singleProductView">
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Imagen Principal</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.description.substring(0, 70) }}...</td>
+          <td>${{ product.price | number:'1.2-2' }}</td>
+          <td>
+            <img [src]="product.images[0]" [alt]="product.title" class="img-thumbnail" style="width: 100px;">
+          </td>
+          <td>{{ product.category?.name }}</td>
+          <td>
+            <button class="btn btn-info btn-sm me-2" (click)="getProductDetails(product.id)">Ver</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !errorMessage && products.length === 0 && !singleProductView && !productId">
+    <div class="alert alert-info mt-3">
+      No se encontraron productos.
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !errorMessage && !singleProductView && productId && products.length === 0">
+    <div class="alert alert-warning mt-3">
+      No se encontró el producto con ID: {{ productId }}.
+    </div>
+  </ng-container>
+
+</div>
