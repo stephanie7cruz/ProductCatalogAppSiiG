@@ -1,0 +1,148 @@
+﻿/* Variables CSS para los colores de marca de SII Group */
+:root {
+    --sii-blue: #0070c7; /* Azul principal de SII Group */
+    --sii-purple: #7a1f5f; /* Púrpura/Magenta de SII Group */
+    --sii-light-blue: #e0f2f7; /* Un azul muy claro para fondos o resaltados suaves */
+    --sii-text-color: #333; /* Color de texto general para mejor legibilidad */
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Puedes probar con 'Arial' o alguna fuente similar */
+    color: var(--sii-text-color);
+}
+
+/* Foco de elementos interactivos: Usamos el azul de SII Group */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--sii-blue);
+}
+
+/* --- Navbar (Barra de navegación) --- */
+.navbar {
+    background-color: var(--sii-blue) !important; /* Fondo azul de SII Group */
+    border-bottom: 1px solid var(--sii-purple) !important; /* Un borde sutil púrpura */
+}
+
+    .navbar .navbar-brand {
+        color: white !important; /* Texto del logo en blanco */
+        font-weight: bold;
+    }
+
+        .navbar .navbar-brand img {
+            height: 30px; /* Asegura que tu logo tenga un tamaño consistente */
+            margin-right: 8px;
+        }
+
+    .navbar .nav-link {
+        color: white !important; /* Enlaces de navegación en blanco */
+        transition: color 0.3s ease;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--sii-purple) !important; /* Púrpura al pasar el mouse */
+        }
+
+/* --- Títulos y Encabezados --- */
+/* Ya tenías este, lo integramos y ajustamos un poco */
+.sii-title {
+    letter-spacing: -0.07em;
+    text-align: center;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Fuentes que se ven limpias */
+    font-weight: bold;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-top: 3rem; /* Espacio superior para el título */
+    margin-bottom: 2rem; /* Espacio inferior */
+}
+
+    .sii-title .blue-text {
+        color: var(--sii-blue);
+    }
+
+    .sii-title .purple-text {
+        color: var(--sii-purple);
+    }
+
+/* --- Botones --- */
+.btn-primary {
+    background-color: var(--sii-blue);
+    border-color: var(--sii-blue);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: var(--sii-purple); /* Cambia a púrpura al pasar el mouse */
+        border-color: var(--sii-purple);
+    }
+
+/* --- Tablas --- */
+.table.table-dark thead { /* Más específico: apunta al thead dentro de una tabla con ambas clases */
+    background-color: var(--sii-blue) !important;
+    color: white !important; /* Asegurarse de que el texto sea blanco también */
+}
+
+/* Opcional: si quieres que el fondo de las celdas también sea azul oscuro */
+.table.table-dark th {
+    background-color: var(--sii-blue) !important;
+    color: white !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--sii-light-blue); /* Filas impares con un azul muy claro */
+}
+
+/* --- Tarjetas (para detalle de producto) --- */
+.card {
+    border-color: var(--sii-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para las tarjetas */
+}
+
+.card-title {
+    color: var(--sii-blue); /* Títulos de tarjeta en azul */
+}
+
+.list-group-item {
+    border-color: rgba(0, 0, 0, 0.05); /* Bordes más sutiles para los elementos de lista */
+}
+
+/* --- Alertas --- */
+.alert-warning {
+    color: var(--sii-purple);
+    background-color: #fff3cd; /* Amarillo suave para warning */
+    border-color: #ffeeba;
+}
+
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.alert-info {
+    color: var(--sii-blue);
+    background-color: var(--sii-light-blue);
+    border-color: #cff4fc;
+}
+
+/* --- Footer (Pie de página) --- */
+.footer {
+    background-color: var(--sii-blue); /* Fondo azul para el pie de página */
+    color: white !important; /* Texto del pie de página en blanco */
+    padding: 1rem 0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
